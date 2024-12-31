@@ -1,0 +1,12 @@
+*{
+    box-sizing: border-box;
+    background-color: aqua;
+}
+h1{
+    padding-top: 30px;
+    text-align: center;
+}
+p{
+    text-align: center;
+    color: #999;
+}

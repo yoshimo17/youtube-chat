@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Flaskで表示するhtml</title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+
+    <body>
+        <h1>このhtmlは、Flaskによって表示してます</h1>
+        <p>
+            テストテストテスト
+        </p>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" accept=".jpg,.jpeg,.png" required>
+            <input type="submit" value="送信">
+        </form>
+        {% if picData %}
+            <p>{{ picData }}</p>
+        {% endif %}
+    </body>
+</html>

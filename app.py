@@ -16,23 +16,20 @@ import signal
 import sys
 from types import FrameType
 
-from flask import Flask
+from flask import Flask, render_template, request, redirect, url_for, session
+from PIL import Image
+
+import imageget
 
 from utils.logging import logger
 
 app = Flask(__name__)
-
+app.secret_key = "YC_seckey-4086567967" #秘密鍵
 
 @app.route("/")
-def hello() -> str:
-    # Use basic logging with custom fields
-    logger.info(logField="custom-entry", arbitraryField="custom-entry")
-
-    # https://cloud.google.com/run/docs/logging#correlate-logs
-    logger.info("Child logger with trace Id.")
-
-    return "Hello, World!!!!!!"
-
+def htmlView():
+    html = render_template("index.html")
+    return html
 
 def shutdown_handler(signal_int: int, frame: FrameType) -> None:
     logger.info(f"Caught Signal {signal.strsignal(signal_int)}")
@@ -55,3 +52,5 @@ if __name__ == "__main__":
 else:
     # handles Cloud Run container termination
     signal.signal(signal.SIGTERM, shutdown_handler)
+
+#参考URL：https://note.com/luuluu3311/n/n25b642838786
