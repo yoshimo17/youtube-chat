@@ -21,10 +21,19 @@ from PIL import Image
 
 import imageget
 
+import requests
+
 from utils.logging import logger
 
 app = Flask(__name__)
 app.secret_key = "YC_seckey-4086567967" #秘密鍵
+
+CLOUD_RUN_URL = "https://asia-northeast1-metal-bonus-446214-g5.cloudfunctions.net/search-chat"
+
+# リクエストデータ
+request_data = {
+    "query": "きた"  # 検索文字列をここで指定
+}
 
 @app.route("/")
 def htmlView():
